@@ -9,7 +9,7 @@ class CreateRecipes < ActiveRecord::Migration[6.0]
       t.decimal :priceTottus  
       t.decimal :priceMetro
       t.decimal :priceVea
-
+      t.string :imagePath
       t.timestamps
     end
   end
