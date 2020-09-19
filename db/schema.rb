@@ -15,8 +15,12 @@ ActiveRecord::Schema.define(version: 2020_08_29_175319) do
   create_table "recipes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "ingredients"
-    t.string "steps"
+    t.text "description"
     t.string "nutritionalValue"
+    t.integer "kind"
+    t.decimal "priceTottus", precision: 10
+    t.decimal "priceMetro", precision: 10
+    t.decimal "priceVea", precision: 10
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
