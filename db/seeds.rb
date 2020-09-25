@@ -8,7 +8,7 @@
 
 #Breakfast
 Recipe.create(name: "Porridge de avena y fruta", ingredients: "avena,fruta, azucar, leche", description: "El porridge es un desayuno típico de la comida inglesa muy saciante. Para prepararlo solo necesitas cocer un poco de avena con agua o leche durante 10 minutos, volcar la masa en un bol y acompañarla de fruta. ¡El plátano, los arándanos y las fresas combinan muy bien!",
-                nutritionalValue: "98% saludable", kind: 1, priceTottus: 3.20, priceMetro: 5.0, priceVea: 3.90, imagePath: "desayuno/image1.jpeg")
+                nutritionalValue: "98% saludable", kind: 1, priceTottus: 3.99, priceMetro: 5.99, priceVea: 3.99, imagePath: "desayuno/image1.jpeg")
 Recipe.create(name: "Pan con tomate", ingredients: "Pan, tomate", description: "Una de las preparaciones más famosas de la dieta mediterránea. Corta una rebanada de pan -mejor si es integral-, echa un poquito de aceite de oliva virgen y un poco de tomate natural triturado o picado. Si quieres también puedes incluir un poco de jamón serrano. ¡Delicioso!",
                 nutritionalValue: "95% saludable", kind: 1, priceTottus: 5.20, priceMetro: 5.0, priceVea: 4.90, imagePath: "desayuno/image2.jpeg")
 Recipe.create(name: "Tostadas de aguacate y huevo", ingredients: "Panes tostado, Palta", description: "Unas tostadas nutritivas, bajas en grasas y ricas en proteínas. Para elaborarlas corta dos rebanadas de pan integral o de centeno, y otras dos rebanadas de aguacate. Prepara un huevo escalfado o cocido y colócalo por encima. ¡Riquísimo!",
