@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_08_29_175319) do
 
-  create_table "preferences_table", primary_key: "user_code", id: :bigint, default: nil, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "preferences_table", primary_key: "user_user_code", id: :bigint, default: nil, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "edad", null: false
     t.integer "frecuencia_actividad", limit: 2, null: false
     t.string "numero_celular"
@@ -29,25 +29,40 @@ ActiveRecord::Schema.define(version: 2020_08_29_175319) do
     t.text "description"
     t.string "nutritionalValue"
     t.integer "kind"
-    t.decimal "priceTottus", precision: 10
-    t.decimal "priceMetro", precision: 10
-    t.decimal "priceVea", precision: 10
+    t.decimal "priceTottus", precision: 10, default: "0"
+    t.decimal "priceMetro", precision: 10, default: "0"
+    t.decimal "priceVea", precision: 10, default: "0"
     t.string "imagePath"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "transactions_table", primary_key: "codigo", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "dia_final"
-    t.string "dia_inicial"
-    t.integer "estado", null: false
-    t.string "fecha_hora"
-    t.float "importe", limit: 53, null: false
-    t.bigint "code"
-    t.index ["code"], name: "FK9tdiu6hb58xflyler1fqgqqx4"
+  create_table "transaction_details_table", primary_key: "code", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.binary "friday", limit: 1, null: false
+    t.binary "monday", limit: 1, null: false
+    t.bigint "recipe_code"
+    t.binary "saturday", limit: 1, null: false
+    t.binary "sunday", limit: 1, null: false
+    t.binary "thursday", limit: 1, null: false
+    t.binary "tuesday", limit: 1, null: false
+    t.binary "wednesday", limit: 1, null: false
+    t.bigint "transaction_code"
+    t.index ["transaction_code"], name: "FKo0n7erno2jetkpmt0fabhnrxn"
   end
 
-  create_table "users_table", primary_key: "code", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "transaction_table", primary_key: "transaction_code", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.float "amount", limit: 53, null: false
+    t.string "date"
+    t.string "hour"
+    t.integer "num_days", null: false
+    t.string "state"
+    t.string "super_market"
+    t.string "type_payment"
+    t.bigint "user_code"
+    t.index ["user_code"], name: "FKecsq3peg0n8fahlkdc3ipjq7c"
+  end
+
+  create_table "users_table", primary_key: "user_code", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email"
     t.string "lastname"
     t.string "name"
@@ -55,5 +70,7 @@ ActiveRecord::Schema.define(version: 2020_08_29_175319) do
     t.integer "role", null: false
   end
 
-  add_foreign_key "transactions_table", "users_table", column: "code", primary_key: "code", name: "FK9tdiu6hb58xflyler1fqgqqx4"
+  add_foreign_key "preferences_table", "users_table", column: "user_user_code", primary_key: "user_code", name: "FKrta14x17om4l2gthdwueejc1r"
+  add_foreign_key "transaction_details_table", "transaction_table", column: "transaction_code", primary_key: "transaction_code", name: "FKo0n7erno2jetkpmt0fabhnrxn"
+  add_foreign_key "transaction_table", "users_table", column: "user_code", primary_key: "user_code", name: "FKecsq3peg0n8fahlkdc3ipjq7c"
 end

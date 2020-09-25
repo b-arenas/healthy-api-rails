@@ -6,9 +6,9 @@ class CreateRecipes < ActiveRecord::Migration[6.0]
       t.text :description
       t.string :nutritionalValue
       t.integer :kind
-      t.decimal :priceTottus  
-      t.decimal :priceMetro
-      t.decimal :priceVea
+      t.decimal :priceTottus, precision: 5, scale: 2
+      t.decimal :priceMetro, precision: 5, scale: 2
+      t.decimal :priceVea, precision: 5, scale: 2
       t.string :imagePath
       t.timestamps
     end
